@@ -1,0 +1,54 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://m4a1_s.obj" type="ArrayMesh" id=1]
+[ext_resource path="res://Material_001.material" type="Material" id=2]
+
+[sub_resource type="Animation" id=1]
+resource_name = "Equip"
+tracks/0/type = "value"
+tracks/0/path = NodePath("Body/M4A1-S:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.4 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector3( -53.421, 0, 0 ), Vector3( 0, 0, 0 ) ]
+}
+
+[sub_resource type="Animation" id=2]
+resource_name = "Unequip"
+tracks/0/type = "value"
+tracks/0/path = NodePath("Body/M4A1-S:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.4 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector3( 0, 0, 0 ), Vector3( 90, 0, 0 ) ]
+}
+
+[node name="Rifle" type="Spatial"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.794041, -2.92511, -2.39616 )
+
+[node name="Body" type="Spatial" parent="."]
+
+[node name="M4A1-S" type="MeshInstance" parent="Body"]
+transform = Transform( 1, 0, 0, 0, 0.569777, 0, 0, 0, 0.616579, 4.08734, 5.06303, -3.24247 )
+mesh = ExtResource( 1 )
+material/0 = ExtResource( 2 )
+
+[node name="Anchor" type="Spatial" parent="Body"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -9.53674e-07, -23.8113 )
+
+[node name="Root" type="Spatial" parent="Body/Anchor"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 23.8113 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/Equip = SubResource( 1 )
+anims/Unequip = SubResource( 2 )

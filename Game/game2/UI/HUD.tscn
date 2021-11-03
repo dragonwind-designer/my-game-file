@@ -1,0 +1,82 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://UI/RobotoHealthFonts.tres" type="DynamicFont" id=1]
+[ext_resource path="res://assets/main fonts/Roboto-Light.ttf" type="DynamicFontData" id=2]
+[ext_resource path="res://assets/main fonts/Roboto-Italic.ttf" type="DynamicFontData" id=3]
+
+[sub_resource type="DynamicFont" id=1]
+size = 15
+font_data = ExtResource( 3 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 34
+font_data = ExtResource( 2 )
+
+[node name="HUD" type="Node2D"]
+
+[node name="Background" type="ColorRect" parent="."]
+margin_left = -3.0
+margin_top = 508.0
+margin_right = 351.0
+margin_bottom = 600.0
+color = Color( 0.152941, 0.141176, 0.141176, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HealthLabel" type="Label" parent="Background"]
+margin_left = 10.7004
+margin_top = 21.7797
+margin_right = 236.7
+margin_bottom = 69.7797
+size_flags_horizontal = 3
+custom_fonts/font = ExtResource( 1 )
+text = "Health: 100"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="WeaponLabel" type="Label" parent="Background"]
+margin_left = 9.96031
+margin_top = 58.4802
+margin_right = 341.96
+margin_bottom = 100.48
+custom_fonts/font = SubResource( 1 )
+text = "Gun: PISTOL (25 / 50)"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Display" type="ColorRect" parent="Background"]
+margin_left = 214.0
+margin_right = 355.0
+margin_bottom = 90.0
+color = Color( 0, 0, 0, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="WeaponSlot" type="Label" parent="Background/Display"]
+margin_left = 113.125
+margin_top = 46.5397
+margin_right = 153.125
+margin_bottom = 87.5397
+custom_fonts/font = SubResource( 2 )
+text = "1"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.815
+margin_left = 500.0
+margin_top = 275.0
+margin_right = 506.0
+margin_bottom = 281.0
+mouse_default_cursor_shape = 3
+color = Color( 0.105882, 0.788235, 0.129412, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}

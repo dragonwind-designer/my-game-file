@@ -1,0 +1,53 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://player/player.gd" type="Script" id=1]
+[ext_resource path="res://gun/pistol.tscn" type="PackedScene" id=2]
+[ext_resource path="res://gun/Rifle.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Unarmed/unarmed.tscn" type="PackedScene" id=4]
+[ext_resource path="res://UI/HUD.tscn" type="PackedScene" id=5]
+[ext_resource path="res://player/weapon_manager.gd" type="Script" id=6]
+[ext_resource path="res://gun/pistol.gd" type="Script" id=7]
+
+[sub_resource type="CapsuleMesh" id=1]
+radius = 0.75
+
+[sub_resource type="CapsuleShape" id=2]
+radius = 0.75
+
+[node name="Player" type="KinematicBody"]
+script = ExtResource( 1 )
+
+[node name="MeshInstance" type="MeshInstance" parent="."]
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 1.22208, 0 )
+mesh = SubResource( 1 )
+material/0 = null
+
+[node name="CollisionShape" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 1.222, 0 )
+shape = SubResource( 2 )
+
+[node name="CamRoot" type="Spatial" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.016927, 2.2577, -0.0185485 )
+
+[node name="Camera" type="Camera" parent="CamRoot"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.116, -0.285, 0 )
+keep_aspect = 0
+fov = 59.5642
+far = 181.4
+
+[node name="Weapon" type="Spatial" parent="CamRoot"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.333, -0.001, -0.006 )
+script = ExtResource( 6 )
+
+[node name="Unarmed" parent="CamRoot/Weapon" instance=ExtResource( 4 )]
+visible = false
+
+[node name="Pistol" parent="CamRoot/Weapon" instance=ExtResource( 2 )]
+transform = Transform( -0.12, 0, 4.19321e-05, 0, 0.12, 0, -4.19321e-05, 0, -0.12, 0.099, -0.595, -1.001 )
+script = ExtResource( 7 )
+
+[node name="Rifle" parent="CamRoot/Weapon" instance=ExtResource( 3 )]
+transform = Transform( -0.18, 0, -2.71792e-08, 0, 0.18, 0, 2.71792e-08, 0, -0.18, 0.899, -1.418, -1.674 )
+visible = false
+
+[node name="HUD" parent="." instance=ExtResource( 5 )]
